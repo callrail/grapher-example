@@ -1,24 +1,26 @@
 class ChartsController < ApplicationController
   before_action :set_chart, only: [:show, :edit, :update, :destroy]
 
+  @foo
+
 
 
   def respond
-    @response = RestClient.get("https://api.callrail.com/v2/a/170499692/calls.json?company_id=763484074&date_range=all_time", {Authorization: "Token token=#{ENV['CR_API_KEY']}"})
-  end
 
-  def formatter
-    @format = JSON.parse(respond)
   end
 
 
   # GET /charts
   # GET /charts.json
   def index
-    @charts = Chart.all
+    @calls = JSON.parse(RestClient.get("https://api.callrail.com/v2/a/170499692/calls/timeseries.json?company_id=763484074&start_date=2017-08-14&end_date=2017-09-14", {Authorization: "Token token=#{ENV['CR_API_KEY']}"}))
+    @data = @calls['data']
+    @formatted_data = @data.map { |c| [c["date"], c["total_calls"]] }
   end
 
-  # GET /charts/1
+
+
+   # GET /charts/1
   # GET /charts/1.json
   def show
   end

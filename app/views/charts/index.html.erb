@@ -1,26 +1,23 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"></p>
 
 <h1>Charts</h1>
-
-<%= @response %>
-<%= pie_chart({"Football" => 10, "Basketball" => 5}) %>
-
+<%= line_chart @formatted_data %>
 
 <table>
   <thead>
     <tr>
-      <th>Content</th>
+      <th>There are <%= @data.count %> Calls</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @charts.each do |chart| %>
+
+    <% @data.each do |call| %>
       <tr>
-        <td><%= chart.content %></td>
-        <td><%= link_to 'Show', chart %></td>
-        <td><%= link_to 'Edit', edit_chart_path(chart) %></td>
-        <td><%= link_to 'Destroy', chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= Date.parse(call["date"]) %></td>
+        <td><%= call["total_calls"] %></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +25,5 @@
 
 <br>
 
-<%= link_to 'New Chart', new_chart_path %>
+<!-- need a key to be the date and the value to be the number of calls on that day -->
+<!--  -->

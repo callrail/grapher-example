@@ -4,7 +4,7 @@ class ChartsController < ApplicationController
   # GET /charts
   # GET /charts.json
   def index
-    @calls = JSON.parse(RestClient.get("https://api.callrail.com/v2/a/170499692/calls/timeseries.json?company_id=385497224&start_date=2017-08-14&end_date=2017-09-14", {Authorization: "Token token=#{ENV['CR_API_KEY']}"}))
+    @calls = JSON.parse(RestClient.get("https://api.callrail.com/v2/a/170499692/calls/timeseries.json?company_id=385497224&start_date=2017-06-14&end_date=2017-09-14", {Authorization: "Token token=#{ENV['CR_API_KEY']}"}))
     @data = @calls['data']
     @formatted_data = @data.map { |c| [c["date"], c["total_calls"]] }
   end

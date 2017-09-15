@@ -1,8 +1,7 @@
 <p id="notice"></p>
 
 <h1>Charts</h1>
-<%= line_chart @formatted_data %>
-
+<%= area_chart @formatted_data, xtitle: "Date of Calls", ytitle: "Number of Calls" %>
 <table>
   <thead>
     <tr>
@@ -10,14 +9,11 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-
     <% @data.each do |call| %>
       <tr>
         <td><%= Date.parse(call["date"]) %></td>
         <td><%= call["total_calls"] %></td>
-
       </tr>
     <% end %>
   </tbody>

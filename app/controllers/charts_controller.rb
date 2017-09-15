@@ -1,15 +1,6 @@
 class ChartsController < ApplicationController
   before_action :set_chart, only: [:show, :edit, :update, :destroy]
 
-  @foo
-
-
-
-  def respond
-
-  end
-
-
   # GET /charts
   # GET /charts.json
   def index
@@ -18,9 +9,7 @@ class ChartsController < ApplicationController
     @formatted_data = @data.map { |c| [c["date"], c["total_calls"]] }
   end
 
-
-
-   # GET /charts/1
+  # GET /charts/1
   # GET /charts/1.json
   def show
   end

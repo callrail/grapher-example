@@ -4,9 +4,31 @@ class ChartsController < ApplicationController
   # GET /charts
   # GET /charts.json
   def index
-    @calls = JSON.parse(RestClient.get("https://api.callrail.com/v2/a/170499692/calls/timeseries.json?company_id=385497224&start_date=2017-06-14&end_date=2017-09-14", {Authorization: "Token token=#{ENV['CR_API_KEY']}"}))
+    # Time series JSON Ping
+    @calls = JSON.parse(RestClient.get("https://api.callrail.com/v2/a/170499692/calls/timeseries.json?company_id=385497224&start_date=2017-06-14&end_date=2017-09-14&fields=total_calls,missed_calls", {Authorization: "Token token=#{ENV['CR_API_KEY']}"}))
     @data = @calls['data']
-    @formatted_data = @data.map { |c| [c["date"], c["total_calls"]] }
+    @total_calls = @data.map { |c| [c["date"], c["total_calls"]] }
+    @missed_calls = @data.map { |c| [c["date"], c["missed_calls"]] }
+    @line_chart_data = [
+      {name: "Total Calls", data: @total_calls},
+      {name: "Missed Calls", data: @missed_calls}
+    ]
+
+    # Summary Data JSON Ping - First Time vs Repeat Callers
+    @first_time_summary = JSON.parse(RestClient.get("https://api.callrail.com/v2/a/170499692/calls/summary.json?company_id=385497224&start_date=2017-06-14&end_date=2017-09-14&group_by=source&first_time_callers=true", {Authorization: "Token token=#{ENV['CR_API_KEY']}"}))
+    @repeat_callers_summary = JSON.parse(RestClient.get("https://api.callrail.com/v2/a/170499692/calls/summary.json?company_id=385497224&start_date=2017-06-14&end_date=2017-09-14&group_by=source&first_time_callers=false", {Authorization: "Token token=#{ENV['CR_API_KEY']}"}))
+    @first_time_callers = @first_time_summary['grouped_results']
+    @first_sources = @first_time_callers.map { |c| [c["key"], c["total_calls"]] }
+    @repeat_callers = @repeat_callers_summary['grouped_results']
+    @repeat_sources = @repeat_callers.map { |c| [c["key"], c["total_calls"]] }
+    @bar_chart_data = [
+      {name: "First Time Callers", data: @first_sources},
+      {name: "Repeat Callers", data: @repeat_sources}
+    ]
+
+
+
+
   end
 
   # GET /charts/1

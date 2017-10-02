@@ -1,7 +1,20 @@
 <p id="notice"></p>
 
 <h1>Charts</h1>
-<%= area_chart @formatted_data, xtitle: "Date of Calls", ytitle: "Number of Calls" %>
+
+<ul></ul>
+  <li><h2>Calls By Date</h2>
+    <%= area_chart @line_chart_data, xtitle: "Date of Calls", ytitle: "Number of Calls" %>
+  </li>
+  <li><h2>Calls By Date</h2>
+    <%= bar_chart @bar_chart_data %>
+  </li>
+<%=@first_time_summary%></br></br></br>
+<%=@repeat_callers_summary%> </br></br></br></br>
+
+<%=@first_time_summary['grouped_results']%></br></br></br></br>
+<%=@sources%>
+
 <table>
   <thead>
     <tr>
@@ -20,6 +33,3 @@
 </table>
 
 <br>
-
-<!-- need a key to be the date and the value to be the number of calls on that day -->
-<!--  -->

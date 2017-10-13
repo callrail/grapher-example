@@ -7,14 +7,17 @@
     <%= area_chart @line_chart_data, xtitle: "Date of Calls", ytitle: "Number of Calls" %>
   </li>
   <li><h2>Calls By Date</h2>
-    <%= bar_chart @bar_chart_data %>
+    <%= bar_chart @bar_chart_data, stacked: true%>
   </li>
-<%=@first_time_summary%></br></br></br>
-<%=@repeat_callers_summary%> </br></br></br></br>
+  <li><h2>Calls By Keyword</h2>
+    <%= pie_chart @pie_chart_kws_data, donut: true%>
+  </li>
 
-<%=@first_time_summary['grouped_results']%></br></br></br></br>
-<%=@sources%>
 
+
+
+
+<!--
 <table>
   <thead>
     <tr>
@@ -33,3 +36,4 @@
 </table>
 
 <br>
+ -->

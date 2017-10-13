@@ -26,9 +26,25 @@ class ChartsController < ApplicationController
       {name: "Repeat Callers", data: @repeat_sources}
     ]
 
-
-
-
+    # Summary Data, Keywords
+    @keywords = JSON.parse(RestClient.get("https://api.callrail.com/v2/a/266101466/calls/summary.json?company_id=297407543&start_date=2017-06-14&end_date=2017-09-14&group_by=keywords", {Authorization: "Token token=#{ENV['CR_API_KEY']}"}))
+    # create array of arrays of Keywords and associated number of calls
+    @kw_array = @keywords['grouped_results']
+    @kws = @kw_array.map { |c| [c['key'], c['total_calls']] }
+    # Sort array of arrays by number of calls
+    @sorted = @kws.sort {|a,b| b[1] <=> a[1]}
+    # report the top 4 sources and combine the rest into "other" array,
+    # excluding calls with "nil" keywords
+    @other = []
+    @pie_chart_kws_data = []
+    @sorted[1..4].each do |kw|
+      @pie_chart_kws_data << kw
+    end
+    @sorted[5..-1].each do |kw|
+      @other << kw[1][1]
+    end
+    @other_arr = ["other", @other.sum]
+    @pie_chart_kws_data << @other_arr
   end
 
   # GET /charts/1

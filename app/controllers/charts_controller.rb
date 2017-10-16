@@ -54,7 +54,6 @@ class ChartsController < ApplicationController
     ]
   end
 
-
   def tagdata
     tag = params[:tag]
     @tags = summary("https://api.callrail.com/v2/a/266101466/calls/summary.json?company_id=297407543&start_date=2017-06-14&end_date=2017-09-14&group_by=keywords&tags[]=#{tag}")

@@ -2,38 +2,27 @@
 
 <h1>Charts</h1>
 
-<ul></ul>
+<ul>
   <li><h2>Calls By Date</h2>
     <%= area_chart @line_chart_data, xtitle: "Date of Calls", ytitle: "Number of Calls" %>
   </li>
-  <li><h2>Calls By Date</h2>
-    <%= bar_chart @bar_chart_data, stacked: true%>
+  <li><h2>First Time vs Repeat Callers</h2>
+    <%= bar_chart @bar_chart_data, stacked: true, max: 7%>
   </li>
   <li><h2>Calls By Keyword</h2>
-    <%= pie_chart @pie_chart_kws_data, donut: true%>
+    <%= pie_chart @pie_chart_kws_data, donut: true %>
   </li>
+  <li><h2>Calls By Tag</h2>
+    <select name="tag_id" id="tags">
+      <option value="select">--Select--</option>
+      <option value="sales">Sales</option>
+      <option value="support">Support</option>
+      <option value="billing">Billing</option>
+      <option value="no_prompt">No Prompt</option>
+    </select>
+  </li>
+</ul>
 
 
 
 
-
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>There are <%= @data.count %> Calls</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @data.each do |call| %>
-      <tr>
-        <td><%= Date.parse(call["date"]) %></td>
-        <td><%= call["total_calls"] %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
- -->

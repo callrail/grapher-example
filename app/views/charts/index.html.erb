@@ -13,13 +13,7 @@
     <%= pie_chart @pie_chart_kws_data, donut: true %>
   </li>
   <li><h2>Calls By Tag</h2>
-    <select name="tag_id" id="tags">
-      <option value="select">--Select--</option>
-      <option value="sales">Sales</option>
-      <option value="support">Support</option>
-      <option value="billing">Billing</option>
-      <option value="no_prompt">No Prompt</option>
-    </select>
+    <%=select_tag(:tag_id, options_for_select([['Sales', 'sales'], ['Support', 'suport'], ['Billing', 'billing'], ['No Prompt', 'no_prompt']]), include_blank: true)%>
   </li>
 </ul>
 

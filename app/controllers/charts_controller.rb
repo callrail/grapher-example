@@ -7,7 +7,6 @@ class ChartsController < ApplicationController
     @bar_chart_data = first_vs_repeat
 
   end
-    # Summary Data JSON Ping - First Time vs Repeat Callers
 
   def first_vs_repeat
     first_time_summary = summary("https://api.callrail.com/v2/a/170499692/calls/summary.json?company_id=385497224&start_date=2017-06-14&end_date=2017-09-14&group_by=source&first_time_callers=true")
@@ -23,7 +22,6 @@ class ChartsController < ApplicationController
   end
 
   def generate_pie_chart
-    # Summary Data, Keywords
     keywords = summary("https://api.callrail.com/v2/a/266101466/calls/summary.json?company_id=297407543&start_date=2017-06-14&end_date=2017-09-14&group_by=keywords")
     # create array of arrays of Keywords and associated number of calls
     kw_array = keywords['grouped_results']

@@ -1,11 +1,8 @@
-console.log("This Works");
-
 function start() {
-  var dropdown = $("#tags");
+  var dropdown = $("#tag_id");
   dropdown.change(function() {
-    console.log( "Handler for .change() called." );
-    $.getJSON("/charts/tagdata?tag=" + dropdown[0].value, function(data) {
-      console.log("data: ", data);
+    $.getJSON("/charts/tag_data?tag=" + dropdown[0].value, function(data) {
+      new Chartkick.PieChart("chart-3", data, {"donut":true});
     });
   });
 };
@@ -13,5 +10,3 @@ function start() {
 $(function() {
     start();
 });
-
-$( ".target" )

@@ -10,10 +10,8 @@
     <%= bar_chart @bar_chart_data, stacked: true, max: 7%>
   </li>
   <li><h2>Calls By Keyword</h2>
+    <%=select_tag(:tag_id, options_for_select([['Sales', 'Sales'], ['Support', 'Support'], ['Billing', 'Billing'], ['No Prompt', 'No Prompt']]), include_blank: true)%>
     <%= pie_chart @pie_chart_kws_data, donut: true %>
-  </li>
-  <li><h2>Calls By Tag</h2>
-    <%=select_tag(:tag_id, options_for_select([['Sales', 'sales'], ['Support', 'suport'], ['Billing', 'billing'], ['No Prompt', 'no_prompt']]), include_blank: true)%>
   </li>
 </ul>
 

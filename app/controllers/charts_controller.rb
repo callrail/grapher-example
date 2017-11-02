@@ -19,15 +19,13 @@ class ChartsController < ApplicationController
   end
 
   def first_vs_repeat
-    first_time_summary = summary("https://api.callrail.com/v2/a/170499692/calls/summary.json?company_id=385497224&start_date=2017-06-14&end_date=2017-09-14&group_by=source&first_time_callers=true")
-    repeat_callers_summary = summary("https://api.callrail.com/v2/a/170499692/calls/summary.json?company_id=385497224&start_date=2017-06-14&end_date=2017-09-14&group_by=source&first_time_callers=false")
-    first_time_callers = first_time_summary['grouped_results']
-    first_sources = first_time_callers.map { |c| [c["key"], c["total_calls"]] }
-    repeat_callers = repeat_callers_summary['grouped_results']
-    repeat_sources = repeat_callers.map { |c| [c["key"], c["total_calls"]] }
+    callers = summary("https://api.callrail.com/v2/a/170499692/calls/summary.json?company_id=385497224&start_date=2017-06-14&end_date=2017-09-14&group_by=source&fields=first_time_callers")
+    results = callers['grouped_results']
+    first_timers = results.map { |c| [c["key"], c["first_time_callers"]] }
+    repeat_callers = results.map { |c| [c["key"], c["total_calls"] - c["first_time_callers"]]}
     bar_chart_data = [
-      {name: "First Time Callers", data: first_sources},
-      {name: "Repeat Callers", data: repeat_sources}
+      {name: "First Time Callers", data: first_timers},
+      {name: "Repeat Callers", data: repeat_callers}
     ]
   end
 

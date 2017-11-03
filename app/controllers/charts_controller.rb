@@ -8,7 +8,7 @@ class ChartsController < ApplicationController
   end
 
   def calls_by_date
-    calls = summary("https://api.callrail.com/v2/a/#{ENV['ACCT_ID']}/calls/timeseries.json?company_id=#{ENV['COM_ID']}&date_range=recent&fields=total_calls,missed_calls")
+    calls = summary("https://api.callrail.com/v2/a/#{ENV['ACCT_ID']}/calls/timeseries.json?company_id=#{ENV['COM_ID']}&fields=total_calls,missed_calls&date_range=recent")
     data = calls['data']
     total_calls = data.map { |c| [c["date"], c["total_calls"]] }
     missed_calls = data.map { |c| [c["date"], c["missed_calls"]] }
@@ -66,10 +66,28 @@ class ChartsController < ApplicationController
 
   def tag_data
     tag = params[:tag]
-    tags = summary("https://api.callrail.com/v2/a/266101466/calls/summary.json?company_id=297407543&start_date=2017-06-14&end_date=2017-09-14&group_by=keywords&tags[]=#{tag}")
+    tags = summary("https://api.callrail.com/v2/a/#{ENV['ACCT_ID']}/calls/summary.json?company_id=#{ENV['COM_ID']}&start_date=2017-06-14&end_date=2017-09-14&group_by=keywords&tags[]=#{tag}")
     results = tags['grouped_results']
     render json: sorter(results)
   end
+
+  # def dater
+  #   case date_range
+  #     when 'recent'
+  #       date_range = 'recent'
+  #     when 'today'
+  #        date_range = 'today'
+  #     when 'yesterday'
+  #       date_range = 'yesterday'
+  #     when 'last 7 days'
+  #       date_range = 'last_7_days'
+  #     when 'last 30 days'
+  #       date_range = 'last_30_days'
+  #     when 'this month'
+  #       date_range = 'this_month'
+  #     when 'last month'
+  #       date_range = 'last_month'
+  #   end
 
 private
 

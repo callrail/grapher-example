@@ -4,7 +4,7 @@
 
   Select your desired tag <%=select_tag(:tag_id, options_for_select([['Sales', 'Sales'], ['Support', 'Support'], ['Billing', 'Billing'], ['No Prompt', 'No Prompt']]), include_blank: true)%>
 
-  Select your date range: <%=select_tag(:date_range, options_for_select([['Recent', 'recent'], ['Yesterday', 'yesterday'], ['Last 7 Days', 'last_7_days'], ['Last 30 Days', 'last_30_days'], ['This Month', 'this_month'], ['Last Month', 'last_month']]), include_blank: true)%>
+  Select your date range: <%=select_tag(:date_range, options_for_select([['Recent', 'recent'], ['Yesterday', 'yesterday'], ['Last 7 Days', 'last_7_days'], ['Last 30 Days', 'last_30_days'], ['This Month', 'this_month'], ['Last Month', 'last_month']]))%>
 <ul>
   <li><h2>Calls By Date</h2>
     <%= area_chart @line_chart_data, xtitle: "Date of Calls", ytitle: "Number of Calls" %>

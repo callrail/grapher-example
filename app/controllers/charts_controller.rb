@@ -2,13 +2,18 @@ class ChartsController < ApplicationController
   # GET /charts
   # GET /charts.json
   def index
-    @line_chart_data = calls_by_date
+    @line_chart_data = calls_by_date_data
     @bar_chart_data = first_vs_repeat
     @pie_chart_kws_data = generate_pie_chart
   end
 
   def calls_by_date
-    calls = summary("https://api.callrail.com/v2/a/#{ENV['ACCT_ID']}/calls/timeseries.json?company_id=#{ENV['COM_ID']}&fields=total_calls,missed_calls&date_range=recent")
+    render json: calls_by_date_data
+  end
+
+  def calls_by_date_data
+    date_range = params[:date_range]
+    calls = summary("https://api.callrail.com/v2/a/#{ENV['ACCT_ID']}/calls/timeseries.json?company_id=#{ENV['COM_ID']}&fields=total_calls,missed_calls&date_range=#{date_range}")
     data = calls['data']
     total_calls = data.map { |c| [c["date"], c["total_calls"]] }
     missed_calls = data.map { |c| [c["date"], c["missed_calls"]] }

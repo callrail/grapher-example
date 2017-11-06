@@ -3,8 +3,8 @@ class ChartsController < ApplicationController
   # GET /charts.json
   def index
     @line_chart_data = calls_by_date_data
-    @bar_chart_data = first_vs_repeat
-    @pie_chart_kws_data = generate_pie_chart
+    @bar_chart_data = first_vs_repeat_data
+    @pie_chart_kws_data = generate_pie_chart_data
   end
 
   def calls_by_date
@@ -24,27 +24,35 @@ class ChartsController < ApplicationController
   end
 
   def first_vs_repeat
-    callers = summary("https://api.callrail.com/v2/a/#{ENV['ACCT_ID']}/calls/summary.json?company_id=#{ENV['COM_ID']}&start_date=2017-06-14&end_date=2017-09-14&group_by=source&fields=first_time_callers")
+    render json: first_vs_repeat_data
+  end
+
+  def first_vs_repeat_data
+    date_range = params[:date_range]
+    callers = summary("https://api.callrail.com/v2/a/#{ENV['ACCT_ID']}/calls/summary.json?company_id=#{ENV['COM_ID']}&date_range=#{date_range}&group_by=source&fields=first_time_callers")
     results = callers['grouped_results'].reject { |c| c["key"] == "Outbound Call" || c["key"].nil? }
+    results = top_five(results)
     first_timers = results.map { |c| [c["key"], c["first_time_callers"]] }
     repeat_callers = results.map { |c| [c["key"], c["total_calls"] - c["first_time_callers"]]}
     bar_chart_data = [
-      {name: "Repeat Callers", data: top_five(repeat_callers)},
-      {name: "First Time Callers", data: top_five(first_timers)}
+      {name: "Repeat Callers", data: repeat_callers},
+      {name: "First Time Callers", data: first_timers}
     ]
   end
 
 # how do I handle cases where the top 5 is different for first time vs repeat callers?
   def top_five(mapped)
-    five_arr = []
-    high_five = mapped.sort {|a,b| b[1] <=> a[1]}
-    high_five[0..4].each do |kw|
-      five_arr << kw
-    end
+    high_five = mapped.sort {|a,b| b['total_calls'] <=> a['total_calls']}
+    high_five.take(5)
   end
 
   def generate_pie_chart
-    keywords = summary("https://api.callrail.com/v2/a/#{ENV['ACCT_ID']}/calls/summary.json?company_id=#{ENV['COM_ID']}&start_date=2017-06-14&end_date=2017-09-14&group_by=keywords")
+    render json: generate_pie_chart_data
+  end
+
+  def generate_pie_chart_data
+    date_range = params[:date_range]
+    keywords = summary("https://api.callrail.com/v2/a/#{ENV['ACCT_ID']}/calls/summary.json?company_id=#{ENV['COM_ID']}&date_range=#{date_range}&group_by=keywords")
     # create array of arrays of Keywords and associated number of calls
     unsorted = keywords['grouped_results']
     sorter(unsorted)

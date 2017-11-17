@@ -5,7 +5,7 @@
   Select your desired tag <%=select_tag(:tag_id, options_for_select([['Sales', 'Sales'], ['Support', 'Support'], ['Billing', 'Billing'], ['No Prompt', 'No Prompt']],
     @params[:tag]), include_blank: true, :onchange => "refetchPage();")%>
 
-  Select your date range: <%=select_tag(:date_range, options_for_select([['Recent', 'recent'], ['Yesterday', 'yesterday'], ['Last 7 Days', 'last_7_days'], ['Last 30 Days', 'last_30_days'], ['This Month', 'this_month'], ['Last Month', 'last_month']], @params[:date_range]), onchange: 'refetchPage();')%>
+  Select your date range: <%=select_tag(:date_range, options_for_select([['Recent', 'recent'], ['This Month', 'this_month'], ['Last Month', 'last_month'], ['Last 30 Days', 'last_30_days'], ['Last 7 Days', 'last_7_days'], ['Yesterday', 'yesterday']], @params[:date_range]), onchange: 'refetchPage();')%>
 <ul>
   <li><h2>Calls By Date</h2>
     <%= area_chart @line_chart_data, xtitle: "Date of Calls", ytitle: "Number of Calls" %>
@@ -15,7 +15,7 @@
   </li>
   <li><h2>Calls By Keyword</h2>
 
-    <%= pie_chart @pie_chart_kws_data, donut: true %>
+    <%= pie_chart @pie_chart_data, donut: true %>
   </li>
 </ul>
 

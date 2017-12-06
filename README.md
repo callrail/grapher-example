@@ -8,7 +8,9 @@
 5. The Running
 
 ## The Who (Who is this for?)
-This project is intended for anyone who wants to see an example of how to consume CallRail's API. Did you just pick up a customer who uses CallRail's API and have no idea how to implement what you read in the [CallRail API Docs](http://apidocs.callrail.com/)? This is a good place for you. Are you a novice coder wanting to make a project that uses an API?
+This project is intended for anyone who wants to see an example of how to consume CallRail's API. Did you just pick up a customer who uses CallRail's API and have no idea how to implement what you read in the [CallRail API Docs](http://apidocs.callrail.com/)? Are you a novice coder wanting to make a project that uses an API? Do you really like pretty charts? This is the place for you!
+
+Since there is a wide range of people with varying levels of programming experience, the code in this project has been thoroughly (some might say overly) documented. Every attempt was made to make this readme and the comments in the code itself easily readable and understandable. If you have a suggestion on how to make something more understandable, please submit a pull request, or send an email to us at support@callrail.com.
 
 ## The What
 

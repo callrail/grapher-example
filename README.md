@@ -44,35 +44,45 @@ TL;DR version:
 ```
 
 ####Get a CallRail Account
+
 If you would like to get this example running locally, you may clone this repo to your machine and run it from there. You will need a CallRail account (you can sign up for a [14 day free trial](https://www.callrail.com/pricing/) without a credit card) and a CallRail API key. Once you have a CallRail account, you can generate an API key by [signing in](https://app.callrail.com/users/sign_in) to CallRail.
 
 ####Generate a CallRail API Key
+
 Next, click on your name in the top right corner. Then click on "view profile". Next, click the link for "API Keys" under the "Security" section on the left side of the screen. Finally, click the "+ Create New API V2 Key" button at the top right.
 
 ####Clone this Repository
+
 Once you have your CallRail API Key, you will want to [clone this repository](https://help.github.com/articles/cloning-a-repository/).
 
 ####CD into the Created Directory
+
 Once you have this repository cloned to your local desktop, in your terminal, change the current working directory to the newly created folder.
 
 ####Bundle Install
+
 Once you are inside of the correct working directory, run `bundle install` from your terminal. This will install the necessary gems to run this web app.
 
 ####Set Environment Variables
+
 Once the bundle installation is complete, you will need to set your environment variables. Open up this project in your favorite text editor and create a new file in the `Grapher` folder called `.env`. This is the place where you are going to store your private account information.
 
 #####API Variable
+
 First, we want to create a variable for your CallRail Api Key. Inside the newly created `.env` file, write the following `CR_API_KEY=` followed by your API key with no spaces. The line will look some thing like `CR_API_KEY=55f5b555e55a55a5555c55555aed555e`.
 
 #####Account ID Variable
+
 Next, we need to make an environment variable for your account ID by writing `ACCT_ID=5555555555` on a new line in your `.env` file. You can find your account ID in the CallRail dashboard by clicking on your name in the top right hand corner of the CallRail Dashboard and clicking the link for "Manage Account". Alternatively, your account ID can be found in the URL of your CallRail Dashboard, immediately following the `a` in the URL (app.callrail.com/a/{your_account_id}).
 
 #####Company ID Variable
+
 Finally, you will want to create your company ID variable by typing `COM_ID=555555555` on a new line of the `.env` file. Your company ID can be found in the URL of your CallRail Dashboard as a query parameter `?company_id=555555555`. ```Note: if the CallRail account you are working in has more than 1 company, you will want to navigate to a page in the CallRail Dashboard that is specific to a company. For instance, the Call Activity page can show `All Companies` or can be toggled to show a specific company. Be sure that the buton just to the left of the date range in the top right corner is set to a specific company, not `All Companies`.```
 
 Once all the environment variables are set, save the `.env` file. You now have working environment variables. Note: It is highly recommended that you add this file to your `.gitignore` file. This prevents you from accidentally exposing your private account information and API key to a public repository. This is accomplished by navigating to the `.gitignore` file in this project and adding `.env` to the bottom of this file if it is not already present.
 
 ####Run Rails Server
+
 Now that your environment is set up, you are ready to run `rails server` in your terminal. This will start the rails server. Once the server is running, open up your favorite internet browser (we used Chrome for developing this app) and navigate to `localhost:3000`. Once that page loads, you should see 3 graphs and two dropdown menus. Feel free to change these menu selections and see how the graphs change.
 
 

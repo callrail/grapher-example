@@ -49,3 +49,29 @@ Once you have your CallRail API Key, you will want to [clone this repository](ht
 Once the bundle installation is complete, run `rails server` in your terminal. This will start the rails server. Once the server is running, open up your favorite internet browser (we used Chrome for developing this app) and navigate to `localhost:3000`. Once that page loads, you should see 3 graphs and two dropdown menus. Feel free to change these menu selections and see how the graphs change.
 
 
+
+
+
+
+
+
+
+???? HOW DO WE GET THE USERS TO HAVE VALID API ACCESS KEYS AND STILL HAVE DATA FOR THE GRPAHS TO DISPLAY????
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

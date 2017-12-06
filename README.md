@@ -79,7 +79,11 @@ Next, we need to make an environment variable for your account ID by writing `AC
 Finally, you will want to create your company ID variable by typing `COM_ID=555555555` on a new line of the `.env` file. Your company ID can be found in the URL of your CallRail Dashboard as a query parameter `?company_id=555555555`.
 
 ```
-Note: if the CallRail account you are working in has more than 1 company, you will want to navigate to a page in the CallRail Dashboard that is specific to a company. For instance, the Call Activity page can show `All Companies` or can be toggled to show a specific company. Be sure that the buton just to the left of the date range in the top right corner is set to a specific company, not `All Companies`.
+Note: if the CallRail account you are working in has more than 1 company, you will want to
+navigate to a page in the CallRail Dashboard that is specific to a company. For instance, the
+Call Activity page can show `All Companies` or can be toggled to show a specific company.
+Be sure that the buton just to the left of the date range in the top right corner is set to a
+specific company, not `All Companies`.
 ```
 
 Once all the environment variables are set, save the `.env` file. You now have working environment variables. Note: It is highly recommended that you add this file to your `.gitignore` file. This prevents you from accidentally exposing your private account information and API key to a public repository. This is accomplished by navigating to the `.gitignore` file in this project and adding `.env` to the bottom of this file if it is not already present.

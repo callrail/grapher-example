@@ -52,7 +52,7 @@ Next, click on your name in the top right corner. Then click on "view profile". 
 
 #### Clone this Repository
 
-Once you have your CallRail API Key, you will want to [clone this repository](https://help.github.com/articles/cloning-a-repository/).
+Once you have your CallRail API Key, you will want to [clone this repository](https://help.github.com/articles/cloning-a-repository/). In short, you will be copying the files for this project found on Github to your local machine, allowing you to make changes to this project without
 
 #### CD into the Created Directory
 
@@ -101,5 +101,6 @@ Now that your environment is set up, you are ready to run `rails server` in your
 
 
 
-
+## Did you find a bug?
+If you found a bug, or have a change to the code that will make this project better, please feel free to submit a pull request. We appreciate open source contributors!
 

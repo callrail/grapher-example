@@ -40,7 +40,8 @@ TL;DR version:
 - bundle install
 - set environment variables
 - in your terminal `rails s`
-- open a browser and navigte to localhost:3000```
+- open a browser and navigte to localhost:3000
+```
 
 #### Get a CallRail Account
 If you would like to get this example running locally, you may clone this repo to your machine and run it from there. You will need a CallRail account (you can sign up for a [14 day free trial](https://www.callrail.com/pricing/) without a credit card) and a CallRail API key. Once you have a CallRail account, you can generate an API key by [signing in](https://app.callrail.com/users/sign_in) to CallRail.

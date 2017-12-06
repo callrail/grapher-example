@@ -86,7 +86,14 @@ Be sure that the buton just to the left of the date range in the top right corne
 specific company, not `All Companies`.
 ```
 
-Once all the environment variables are set, save the `.env` file. You now have working environment variables. Note: It is highly recommended that you add this file to your `.gitignore` file. This prevents you from accidentally exposing your private account information and API key to a public repository. This is accomplished by navigating to the `.gitignore` file in this project and adding `.env` to the bottom of this file if it is not already present.
+Once all the environment variables are set, save the `.env` file. You now have working environment variables.
+
+```
+Note: It is highly recommended that you add this file to your `.gitignore` file. This prevents
+you from accidentally exposing your private account information and API key to a public
+repository. This is accomplished by navigating to the `.gitignore` file in this project and
+adding `.env` to the bottom of this file if it is not already present.
+```
 
 #### Run Rails Server
 

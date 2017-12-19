@@ -58,7 +58,7 @@ Next, click on your name in the top right corner. Then click on "view profile". 
 
 ### Clone this Repository
 
-Once you have your CallRail API Key, you will want to [clone this repository](https://help.github.com/articles/cloning-a-repository/). In short, you will be copying the files for this project found on Github to your local machine, allowing you to make changes to this project without
+Once you have your CallRail API Key, you will want to [clone this repository](https://help.github.com/articles/cloning-a-repository/). In short, you will be copying the files for this project found on Github to your local machine, allowing you to make changes to this project on your machine.
 
 ### CD into the Created Directory
 

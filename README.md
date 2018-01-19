@@ -14,7 +14,7 @@ Since there is a wide range of people with varying levels of programming experie
 
 ## The What
 
-`Grapher` is an exercise is implementing usage of the CallRail API. This is intended to serve as a practical example of what can be done with CallRail's API within a Rails project. At it's core, `Grapher` is a simple dashboard app that displays 3 graphs. The information displayed via these graphs reflects call data within a specific time frame. By using the dropwodn menus located at the top of the page, you can narrow down the call data by date range and call tag.
+`Grapher` is an exercise is implementing usage of the CallRail API. This is intended to serve as a practical example of what can be done with CallRail's API within a Rails project. At it's core, `Grapher` is a simple dashboard app that displays 3 graphs. The information displayed via these graphs reflects call data within a specific time frame. By using the dropdown menus located at the top of the page, you can narrow down the call data by date range and call tag.
 
 ## The How
 

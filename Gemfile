@@ -13,8 +13,6 @@ gem 'rest-client'
 gem 'chartkick'
 gem 'pry'
 
-
-
 group :development, :test do
   gem 'byebug', '9.0.6', platform: :mri
   gem 'dotenv-rails'

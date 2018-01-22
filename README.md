@@ -70,13 +70,13 @@ Once you are inside of the correct working directory, run `bundle install` from 
 
 ### Set Environment Variables
 
-Once the bundle installation is complete, you will need to set your environment variables. There is a sample environment variable file named `.env.sample` included in this project. From your terminal, you can type `cp .env.sample .env` and this sample file will be copied to the `.env` file in your cloned project. Alternatively, you can copy everything out of the `.env.sample` file and paste it into the .env file of your cloned project.
+Once the bundle installation is complete, you will need to set your environment variables. There is a sample environment variable file named `.env.sample` included in this project. From your terminal, you can type `cp .env.sample .env` and this sample file will be copied to the `.env` file in your cloned project. Alternatively, you can create a new file called `.env` under the grapher-example top level folder, then copy everything out of the `.env.sample` file, and paste it into the newly created `.env` file of your cloned project.
 
-The first line of the `.env.sample` file should say `CR_API_KEY=your_key_here`. Replace `your_key_here` with your CallRail API key.
+Now that the necessary files are present, you need to customize them with your information. The first line of the `.env.sample` file should say `CR_API_KEY=your_key_here`. Replace `your_key_here` with your CallRail API key.
 
-Next, replace `your_account_id` with your account ID. You can find your account ID in the CallRail dashboard by clicking on your name in the top right hand corner of the CallRail Dashboard and clicking the link for "Manage Account". Alternatively, your account ID can be found in the URL of your CallRail Dashboard, immediately following the `a` in the URL (app.callrail.com/a/{your_account_id}).
+Next, replace `your_account_id` part of `ACCT_ID=your_account_id` with your account ID. You can find your account ID in the CallRail dashboard by clicking on your name in the top right hand corner of the CallRail Dashboard and clicking the link for "Manage Account". Alternatively, your account ID can be found in the URL of your CallRail Dashboard, immediately following the `a` in the URL (app.callrail.com/a/{your_account_id}).
 
-Finally, replace `your_company_id` with the company ID you wish to use. Your company ID can be found in the URL of your CallRail Dashboard as a query parameter `?company_id=555555555`.
+Finally, replace `your_company_id` in `COM_ID=your_company_id` with the company ID you wish to use. Your company ID can be found in the URL of your CallRail Dashboard as a query parameter `?company_id=555555555`.
 
 ```
 Note: if the CallRail account you are working in has more than 1 company, you will want to navigate to a page in the CallRail Dashboard that is specific to a company. For instance, the Call Activity page can show `All Companies` or can be toggled to show a specific company. Be sure that the buton just to the left of the date range in the top right corner is set to a specific company, not `All Companies`.
